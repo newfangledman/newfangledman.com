@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[8],{282:function(n,t,e){"use strict";e.r(t),t.default="---\ntitle: first post\npublished: true\ntags: recipes,\nctime: 2019-10-18\n---\n\n## HELLO WORLD\n"}}]);
