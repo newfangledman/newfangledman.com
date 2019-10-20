@@ -15,9 +15,9 @@
   </div>
 </template>
 <script>
-// Let's require the needed modules
+// eslint-disable
 const fm = require("front-matter");
-var md = require("markdown-it")({
+const md = require("markdown-it")({
   html: true,
   typographer: true
 });
@@ -26,11 +26,10 @@ export default {
   async asyncData({ params }) {
     // We read the markdown file by looking at the `post` parameter
     // in the URL and searching for a markdown file with that name in
-    // the articles directory
-    const fileContent = await import(`../recipes/${params.post}.md`);
+    const fileContent = await import(`@/content/food/${params.posts}.md`);
     // We process the raw output through front-matter
     // (markdownit was giving me garbled results)
-    let res = fm(fileContent.default);
+    const res = fm(fileContent.default);
     return {
       // attributes will be an object containing the markdown metadata
       attributes: res.attributes,

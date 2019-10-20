@@ -1,9 +1,9 @@
-const glob = require('glob')
-let files = glob.sync(['!node_modules', '**/*.md'])
+const glob = require('glob');
+const files = glob.sync('**/*.md', { cwd: 'content' });
 
 function getSlugs(post, _) {
-  let slug = post.substr(0, post.lastIndexOf('.'))
-  return `/${slug}`
+  const slug = post.substr(0, post.lastIndexOf('.'));
+  return `/${slug}`;
 }
 export default {
   mode: 'universal',
@@ -13,7 +13,7 @@ export default {
   generate: {
     dir: 'docs',
     routes: function() {
-      return files.map(getSlugs)
+      return files.map(getSlugs);
     }
   },
   head: {
@@ -73,7 +73,7 @@ export default {
       config.module.rules.push({
         test: /\.md$/,
         use: ['raw-loader']
-      })
+      });
     }
   }
-}
+};
