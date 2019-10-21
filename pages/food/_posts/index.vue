@@ -5,8 +5,7 @@
         <div class="blog column is-10-tablet">
           <div class="title">{{ attributes.title }}</div>
           <div class="subtitle">
-            Published on {{attributes.ctime}}
-            by {{ attributes.author }}
+            Published on {{ attributes.ctime }} by {{ attributes.author }}
           </div>
           <div v-html="content" class="blog-content content"></div>
         </div>
@@ -15,9 +14,8 @@
   </div>
 </template>
 <script>
-// eslint-disable
-const fm = require("front-matter");
-const md = require("markdown-it")({
+const fm = require('front-matter');
+const md = require('markdown-it')({
   html: true,
   typographer: true
 });
