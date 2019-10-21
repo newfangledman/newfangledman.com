@@ -14,7 +14,7 @@
   </div>
 </template>
 <script>
-const fm = require('front-matter');
+const fm = require("front-matter");
 const md = require('markdown-it')({
   html: true,
   typographer: true
