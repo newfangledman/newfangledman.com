@@ -1,5 +1,5 @@
-  <template>
-    <div v-if="attributes" :key="$route.params.post">
+<template>
+  <div v-if="attributes" :key="$route.params.post">
     <div class="container">
       <div class="columns is-centered">
         <div class="blog column is-10-tablet">
@@ -12,16 +12,14 @@
       </div>
     </div>
   </div>
-  </template>
-  
-  <script>
-  export default {
-      props: {
-          attributes: {type: Object, required: true}
-      }
+</template>
+
+<script>
+export default {
+  props: {
+    attributes: { type: Object, required: true }
   }
-  </script>
-  
-  <style>
-  
-  </style>
+};
+</script>
+
+<style></style>
