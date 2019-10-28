@@ -16,8 +16,10 @@
 
 <script>
 export default {
+  name: `PostContent`,
   props: {
-    attributes: { type: Object, required: true }
+    attributes: { type: Object, required: true },
+    content: { type: String, required: true },
   }
 };
 </script>
