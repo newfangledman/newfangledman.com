@@ -9,12 +9,16 @@ export async function extractContent(base, { posts }) {
     return { content: [], attributes: false };
   }
   let fileContent;
+  // imports need to be static
   switch (base) {
     case 'food':
       fileContent = await import(`@/content/food/${posts}.md`);
       break;
     case 'design':
       fileContent = await import(`@/content/design/${posts}.md`);
+      break;
+    case 'code':
+      fileContent = await import(`@/content/code/${posts}.md`);
       break;
   }
 
