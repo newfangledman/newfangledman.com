@@ -9,7 +9,7 @@ export default {
     [PostContainer.name]: PostContainer
   },
   async asyncData(context) {
-    return extractContent(context)
+    return extractContent(context);
   }
 };
 </script>

@@ -1,4 +1,4 @@
-export function getFiles(dir) {
+function getFiles(dir) {
   if (process.server) {
     const fs = require('fs');
     const files = fs.readdirSync(`./content/${dir}`);
@@ -16,12 +16,12 @@ export async function extractContent({
     typographer: true
   });
 
-  const base = fullPath.split('/')[1];
+  const contentBase = fullPath.split('/')[1];
 
   if (typeof posts === 'undefined') {
-    return { content: '', attributes: { files: getFiles(base) } };
+    return { content: '', attributes: { files: getFiles(contentBase) } };
   }
-  const fileContent = await import(`@/content/${base}/${posts}.md`);
+  const fileContent = await import(`@/content/${contentBase}/${posts}.md`);
 
   const { attributes, body } = fm(fileContent.default);
 

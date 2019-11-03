@@ -11,13 +11,13 @@
 <script>
 import PostContent from '@/components/PostContent';
 export default {
-  name: "PostContainer",
+  name: 'PostContainer',
   components: {
     [PostContent.name]: PostContent
   },
   props: {
-      content: {type: String, default: ""},
-      attributes: {type: Object, default: () => ({})}
+    content: { type: String, default: '' },
+    attributes: { type: Object, default: () => ({}) }
   }
 };
 </script>
