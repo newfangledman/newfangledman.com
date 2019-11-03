@@ -6,29 +6,23 @@ export function getFiles(dir) {
   }
 }
 
-export async function extractContent(base, { posts }) {
+export async function extractContent({
+  params: { posts },
+  route: { fullPath }
+}) {
   const fm = require('front-matter');
   const md = require('markdown-it')({
     html: true,
     typographer: true
   });
 
+  const base = fullPath.split('/')[1];
+
   if (typeof posts === 'undefined') {
     return { content: '', attributes: { files: getFiles(base) } };
   }
-  let fileContent;
-  // imports need to be static
-  switch (base) {
-    case 'food':
-      fileContent = await import(`@/content/food/${posts}.md`);
-      break;
-    case 'design':
-      fileContent = await import(`@/content/design/${posts}.md`);
-      break;
-    case 'code':
-      fileContent = await import(`@/content/code/${posts}.md`);
-      break;
-  }
+  const fileContent = await import(`@/content/${base}/${posts}.md`);
+
   const { attributes, body } = fm(fileContent.default);
 
   return {

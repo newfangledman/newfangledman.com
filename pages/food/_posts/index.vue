@@ -1,15 +1,15 @@
 <template>
-  <post-content :attributes="attributes" :content="content"></post-content>
+  <post-container :content="content" :attributes="attributes"></post-container>
 </template>
 <script>
 import { extractContent } from '@/pages/utils/utils';
-import PostContent from '@/components/PostContent';
+import PostContainer from '@/containers/PostContainer';
 export default {
   components: {
-    [PostContent.name]: PostContent
+    [PostContainer.name]: PostContainer
   },
-  async asyncData({ params }) {
-    return extractContent(`food`, params);
+  async asyncData(context) {
+    return extractContent(context)
   }
 };
 </script>

@@ -1,25 +1,15 @@
 <template>
-  <div>
-    <div v-if="!content.length" :attributes="attributes">HELLO</div>
-    <post-content v-if="content.length":attributes="attributes" :content="content"></post-content>
-  </div>
+  <post-container :content="content" :attributes="attributes"></post-container>
 </template>
 <script>
-import { extractContent, getFiles } from '@/pages/utils/utils';
-import PostContent from '@/components/PostContent';
-const contentBase = `code`
-getFiles(contentBase)
+import { extractContent } from '@/pages/utils/utils';
+import PostContainer from '@/containers/PostContainer';
 export default {
   components: {
-    [PostContent.name]: PostContent
+    [PostContainer.name]: PostContainer
   },
-  data() {
-    return {
-      contentBase: `code`
-    }
-  },
-  async asyncData({ params }) {
-    return extractContent(contentBase, params);
+  async asyncData(context) {
+    return extractContent(context)
   }
 };
 </script>
