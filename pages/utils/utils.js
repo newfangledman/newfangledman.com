@@ -21,7 +21,6 @@ export async function extractContent(base, { posts }) {
       fileContent = await import(`@/content/code/${posts}.md`);
       break;
   }
-
   const { attributes, body } = fm(fileContent.default);
 
   return {
