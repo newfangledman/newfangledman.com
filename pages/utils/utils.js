@@ -1,3 +1,11 @@
+export function getFiles(dir) {
+  if (process.server) {
+    const fs = require('fs');
+    const files = fs.readdirSync(`./content/${dir}`);
+    return files;
+  }
+}
+
 export async function extractContent(base, { posts }) {
   const fm = require('front-matter');
   const md = require('markdown-it')({
@@ -6,7 +14,7 @@ export async function extractContent(base, { posts }) {
   });
 
   if (typeof posts === 'undefined') {
-    return { content: [], attributes: false };
+    return { content: '', attributes: { files: getFiles(base) } };
   }
   let fileContent;
   // imports need to be static

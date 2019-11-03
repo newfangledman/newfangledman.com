@@ -22,9 +22,9 @@
     }
   },
   "dependencies": {
+    "@nuxtjs/axios": "^5.3.6",
     "nuxt": "^2.0.0",
-    "nuxt-buefy": "^0.3.2",
-    "@nuxtjs/axios": "^5.3.6"
+    "nuxt-buefy": "^0.3.2"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^1.0.1",
