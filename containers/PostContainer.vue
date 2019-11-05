@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="!content.length" :attributes="attributes">HELLO</div>
+    <post-links v-if="!content.length" :attributes="attributes"></post-links>
     <post-content
       v-if="content.length"
       :attributes="attributes"
@@ -10,10 +10,12 @@
 </template>
 <script>
 import PostContent from '@/components/PostContent';
+import PostLinks from '@/components/PostLinks';
 export default {
   name: 'PostContainer',
   components: {
-    [PostContent.name]: PostContent
+    [PostContent.name]: PostContent,
+    [PostLinks.name]: PostLinks
   },
   props: {
     content: { type: String, default: '' },
