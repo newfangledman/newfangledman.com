@@ -1,14 +1,21 @@
 <template>
-  <div>NO CONTENT</div>
+  <div>
+    <ul>
+      <li v-for="fileName in fileNames">{{ fileName }}</li>
+    </ul>
+  </div>
 </template>
 
 <script>
 export default {
   name: 'PostLinks',
-  props: { attributes: { Type: Object } }
+  props: { files: { type: Array, default: () => [] } },
+  computed: {
+    fileNames() {
+      return this.files.map((fileName) => fileName.replace('.md', ''));
+    }
+  }
 };
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

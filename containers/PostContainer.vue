@@ -1,6 +1,6 @@
 <template>
   <div>
-    <post-links v-if="!content.length" :attributes="attributes"></post-links>
+    <post-links v-if="!content.length" :files="attributes.files"></post-links>
     <post-content
       v-if="content.length"
       :attributes="attributes"
