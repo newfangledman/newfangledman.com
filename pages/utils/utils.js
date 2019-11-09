@@ -16,10 +16,10 @@ export async function extractContent({
     typographer: true
   });
 
-  const contentBaseclear = fullPath.split('/')[1];
+  const contentBase = fullPath.split('/')[1];
 
   if (typeof posts === 'undefined') {
-    return { content: '', attributes: { files: getFiles(contentBaseclear) } };
+    return { content: '', attributes: { files: getFiles(contentBase) } };
   }
   const fileContent = await import(`@/content/${contentBaseclear}/${posts}.md`);
 
