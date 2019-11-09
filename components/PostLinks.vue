@@ -1,16 +1,24 @@
 <template>
   <section class="section">
     <div class="columns is-mobile">
-      <card :key="file" v-for="file in files" v-bind="[file]">
-        {{ file }}
+      <card
+        :key="file"
+        v-for="file in files"
+        :title="file"
+        icon="github-circle"
+      >
       </card>
     </div>
   </section>
 </template>
 
 <script>
+import Card from '@/components/Card';
 export default {
   name: 'PostLinks',
+  components: {
+    [Card.name]: Card
+  },
   props: { files: { type: Array, default: () => [] } },
   computed: {
     fileNames() {
