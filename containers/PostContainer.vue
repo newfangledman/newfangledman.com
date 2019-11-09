@@ -11,9 +11,11 @@
 <script>
 import PostContent from '@/components/PostContent';
 import PostLinks from '@/components/PostLinks';
+import Card from '@/components/Card';
 export default {
   name: 'PostContainer',
   components: {
+    [Card.name]: Card,
     [PostContent.name]: PostContent,
     [PostLinks.name]: PostLinks
   },

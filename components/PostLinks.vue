@@ -1,9 +1,11 @@
 <template>
-  <div>
-    <ul>
-      <li v-for="fileName in fileNames">{{ fileName }}</li>
-    </ul>
-  </div>
+  <section class="section">
+    <div class="columns is-mobile">
+      <card :key="file" v-for="file in files" v-bind="[file]">
+        {{ file }}
+      </card>
+    </div>
+  </section>
 </template>
 
 <script>
