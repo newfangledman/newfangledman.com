@@ -21,7 +21,7 @@ export async function extractContent({
   if (typeof posts === 'undefined') {
     return { content: '', attributes: { files: getFiles(contentBase) } };
   }
-  const fileContent = await import(`@/content/${contentBaseclear}/${posts}.md`);
+  const fileContent = await import(`@/content/${contentBase}/${posts}.md`);
 
   const { attributes, body } = fm(fileContent.default);
 
