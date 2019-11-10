@@ -27,6 +27,7 @@
     "nuxt-buefy": "^0.3.2"
   },
   "devDependencies": {
+    "@nuxt/typescript-build": "^0.3.4",
     "@nuxtjs/eslint-config": "^1.0.1",
     "@nuxtjs/eslint-module": "^1.0.0",
     "@nuxtjs/markdownit": "^1.2.7",

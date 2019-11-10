@@ -12,7 +12,7 @@ export default {
    */
   generate: {
     dir: 'docs',
-    routes: function() {
+    routes() {
       return files.map(getSlugs);
     }
   },
@@ -46,7 +46,8 @@ export default {
    */
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
-    '@nuxtjs/eslint-module'
+    '@nuxtjs/eslint-module',
+    '@nuxt/typescript-build'
   ],
   /*
    ** Nuxt.js modules
