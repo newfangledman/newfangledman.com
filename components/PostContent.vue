@@ -3,7 +3,9 @@
     <div class="container">
       <div class="columns is-centered">
         <div class="blog column is-10-tablet">
-          <div class="title">{{ attributes.title }}</div>
+          <div class="title">
+            {{ attributes.title }}
+          </div>
           <div class="subtitle">
             Published on {{ attributes.ctime }} by {{ attributes.author }}
           </div>

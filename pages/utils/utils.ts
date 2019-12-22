@@ -11,17 +11,17 @@ export async function extractContent({
     html: true,
     typographer: true
   });
-  console.log(params, posts);
 
   const contentBase = fullPath.split('/')[1];
 
   if (typeof posts === 'undefined') {
     const attributes = createAttributesForDir(contentBase);
-    return { content: '', attributes };
+    return { contentBase, content: '', attributes };
   }
   const fileContent = await import(`@/content/${contentBase}/${posts}.md`);
   const { attributes, body } = fm(fileContent.default);
   return {
+    contentBase,
     attributes,
     content: md.render(body)
   };

@@ -3,8 +3,9 @@
     <div class="columns is-mobile">
       <card
         :key="file"
-        v-for="file in files"
+        v-for="file in fileNames"
         :title="file"
+        :contentBase="$attrs.contentBase"
         icon="github-circle"
       >
       </card>

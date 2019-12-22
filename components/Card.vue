@@ -3,7 +3,7 @@
     <div class="card">
       <header class="card-header">
         <p class="card-header-title has-text-grey">
-          {{ title }}
+          <a :href="postLink">{{ title }}</a>
         </p>
       </header>
       <div class="card-content">
@@ -33,6 +33,15 @@ export default {
     icon: {
       type: String,
       required: true
+    },
+    contentBase: {
+      type: String,
+      required: true
+    }
+  },
+  computed: {
+    postLink() {
+      return `/${this.contentBase}/${this.title}`;
     }
   }
 };
