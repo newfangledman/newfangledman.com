@@ -1,8 +1,9 @@
 export async function extractContent({
-  params: { post },
+  params,
+  params: { posts },
   route: { fullPath }
 }: {
-  params: { post: string | undefined };
+  params: { posts: string | undefined };
   route: { fullPath: string };
 }) {
   const fm = require('front-matter');
@@ -10,17 +11,16 @@ export async function extractContent({
     html: true,
     typographer: true
   });
+  console.log(params, posts);
 
   const contentBase = fullPath.split('/')[1];
 
-  if (typeof post === 'undefined') {
+  if (typeof posts === 'undefined') {
     const attributes = createAttributesForDir(contentBase);
     return { content: '', attributes };
   }
-  const fileContent = await import(`@/content/${contentBase}/${post}.md`);
-
+  const fileContent = await import(`@/content/${contentBase}/${posts}.md`);
   const { attributes, body } = fm(fileContent.default);
-
   return {
     attributes,
     content: md.render(body)
