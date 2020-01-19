@@ -38,9 +38,29 @@ import Card from '~/components/Card';
 
 export default {
   name: 'HomePage',
-
   components: {
     Card
-  }
+  },
+    data() {
+    return {
+      selectedTag: null,
+      activeClass: "active"
+    };
+  },
+  computed: {
+    posts() {
+      return this.$store.state.posts;
+    },
+    tags() {
+      return this.$store.state.tags;
+    },
+    sortedPosts() {
+      if (!this.selectedTag) return this.posts;
+      return this.posts.filter(el => el.tags.includes(this.selectedTag));
+    }
+  },
+  created() {
+    this.$store.dispatch("getPosts");
+  },
 };
 </script>
