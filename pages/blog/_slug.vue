@@ -1,5 +1,9 @@
 <template>
-  <post-container :content="content" :attributes="attributes"></post-container>
+  <post-container
+    :contentBase="contentBase"
+    :content="content"
+    :attributes="attributes"
+  ></post-container>
 </template>
 <script>
 import { extractContent } from '@/pages/utils/utils';
