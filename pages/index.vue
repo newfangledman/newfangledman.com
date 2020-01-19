@@ -41,10 +41,10 @@ export default {
   components: {
     Card
   },
-    data() {
+  data() {
     return {
       selectedTag: null,
-      activeClass: "active"
+      activeClass: 'active'
     };
   },
   computed: {
@@ -56,11 +56,11 @@ export default {
     },
     sortedPosts() {
       if (!this.selectedTag) return this.posts;
-      return this.posts.filter(el => el.tags.includes(this.selectedTag));
+      return this.posts.filter((el) => el.tags.includes(this.selectedTag));
     }
   },
   created() {
-    this.$store.dispatch("getPosts");
-  },
+    this.$store.dispatch('getPosts');
+  }
 };
 </script>
