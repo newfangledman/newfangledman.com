@@ -1,19 +1,45 @@
 <template>
-  <post-container
-    :contentBase="contentBase"
-    :content="content"
-    :attributes="attributes"
-  ></post-container>
+  <main v-if="post" class="post individual">
+    <h1>{{ post.title.rendered }}</h1>
+    <small class="date">{{ post.date }}</small>
+    <section v-html="post.content.rendered"></section>
+  </main>
 </template>
 <script>
-import { extractContent } from '@/pages/utils/utils';
-import PostContainer from '@/containers/PostContainer';
 export default {
-  components: {
-    [PostContainer.name]: PostContainer
+  computed: {
+    posts() {
+      return this.$store.state.posts;
+    },
+    post() {
+      return this.posts.find(el => el.slug === this.slug);
+    }
   },
-  async asyncData(context) {
-    return extractContent(context);
+  data() {
+    return {
+      slug: this.$route.params.slug
+    };
+  },
+  mounted() {
+    this.$store.dispatch("getPosts");
   }
 };
 </script>
+
+<style lang="scss" scoped>
+main.post {
+  margin: 60px auto 50px;
+  max-width: 800px;
+  padding: 0 30px 70px;
+}
+h1 {
+  color: black;
+  font-size: 40px;
+}
+section {
+  color: #444;
+}
+.date {
+  text-align: center;
+}
+</style>

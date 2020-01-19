@@ -1,36 +1,34 @@
 <template>
-  <section class="section">
-    <div class="columns is-mobile">
-      <card title="Free" icon="github-circle">
-        Open source on
-        <a href="https://github.com/buefy/buefy">
-          GitHub
-        </a>
-      </card>
-
-      <card title="Responsive" icon="cellphone-link">
-        <b class="has-text-grey">
-          Every
-        </b>
-        component is responsive
-      </card>
-
-      <card title="Modern" icon="alert-decagram">
-        Built with
-        <a href="https://vuejs.org/">
-          Vue.js
-        </a>
-        and
-        <a href="http://bulma.io/">
-          Bulma
-        </a>
-      </card>
-
-      <card title="Lightweight" icon="arrange-bring-to-front">
-        No other internal dependency
-      </card>
+  <div>
+    <div class="posts">
+      <main>
+        <div class="post" v-for="post in sortedPosts" :key="post.id">
+          <h3>
+            <a :href="`blog/${post.slug}`">{{ post.title.rendered }}</a>
+          </h3>
+          <small>{{ post.date }}</small>
+          <div v-html="post.excerpt.rendered"></div>
+          <a :href="`blog/${post.slug}`" class="readmore slide">Read more ⟶</a>
+        </div>
+      </main>
+      <aside>
+        <h2 class="tags-title">Tags</h2>
+        <div class="tags-list">
+          <ul>
+            <li
+              @click="updateTag(tag)"
+              v-for="tag in tags"
+              :key="tag.id"
+              :class="[tag.id === selectedTag ? activeClass : '']"
+            >
+              <a>{{ tag.name }}</a>
+              <span v-if="tag.id === selectedTag">✕</span>
+            </li>
+          </ul>
+        </div>
+      </aside>
     </div>
-  </section>
+  </div>
 </template>
 
 <script>
