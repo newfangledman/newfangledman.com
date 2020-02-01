@@ -1,0 +1,43 @@
+version: '3'
+services:
+
+  ghost:
+    image: ghost:latest
+    restart: always
+    depends_on:
+      - db
+    environment:
+      url: http://localhost:81
+      database__client: mysql
+      database__connection__host: db
+      database__connection__user: root
+      database__connection__password: dev
+      database__connection__database: ghost
+    volumes:
+      - /ghost/content:/var/lib/ghost/content
+
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: dev
+    volumes:
+      - /ghost/db:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    expose:
+      - "3306"
+
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    restart: always
+    depends_on:
+      - ghost
+    ports:
+      - "81:80"
+      - "443:443"
+    volumes:
+      #  - ./nginx/certs/:/etc/letsencrypt/
+       - ./nginx/html:/usr/share/nginx/html

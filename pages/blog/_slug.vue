@@ -12,7 +12,7 @@ export default {
       return this.$store.state.posts;
     },
     post() {
-      return this.posts.find(el => el.slug === this.slug);
+      return this.posts.find((el) => el.slug === this.slug);
     }
   },
   data() {
@@ -21,7 +21,7 @@ export default {
     };
   },
   mounted() {
-    this.$store.dispatch("getPosts");
+    this.$store.dispatch('getPosts');
   }
 };
 </script>
