@@ -18,8 +18,9 @@ export async function extractContent({
     const attributes = createAttributesForDir(contentBase);
     return { contentBase, content: '', attributes };
   }
-  const fileContent = await import(`@/content/${contentBase}/${posts}.md`);
-  const { attributes, body } = fm(fileContent.default);
+  // import here
+  const fileContent = "";
+  const { attributes, body } = fm(fileContent);
   return {
     contentBase,
     attributes,
