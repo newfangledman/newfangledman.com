@@ -1,5 +1,6 @@
 const glob = require('glob');
 const files = glob.sync('**/*.md', { cwd: 'content' });
+require('dotenv').config();
 
 function getSlugs(post, _) {
   const slug = post.substr(0, post.lastIndexOf('.'));
@@ -7,6 +8,10 @@ function getSlugs(post, _) {
 }
 export default {
   mode: 'universal',
+  env: {
+    contentLocation: process.env.CONTENT_LOCATION,
+    contentApiKey: process.env.CONTENT_API_KEY
+  },
   /*
    ** Headers of the page
    */
@@ -47,6 +52,7 @@ export default {
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
     '@nuxtjs/eslint-module',
+    '@nuxtjs/dotenv',
     '@nuxt/typescript-build'
   ],
   /*

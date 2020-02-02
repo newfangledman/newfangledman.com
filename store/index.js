@@ -1,3 +1,4 @@
+import GhostContentAPI from '@tryghost/content-api';
 const siteURL = 'https://css-tricks.com';
 
 export const state = () => ({
@@ -17,21 +18,31 @@ export const mutations = {
 export const actions = {
   async getPosts({ state, commit, dispatch }) {
     if (state.posts.length) return;
+    const api = new GhostContentAPI({
+      url: process.env.contentLocation,
+      key: process.env.contentApiKey,
+      version: 'v3'
+    });
+
     try {
-      let posts = await fetch(
-        `${siteURL}/wp-json/wp/v2/posts?page=1&per_page=20&_embed=1`
-      ).then((res) => res.json());
+      let posts = await api.posts
+        .browse({ limit: 5, include: 'tags,authors' })
+        .then((posts) => posts)
+        .catch((err) => {
+          console.error(err);
+        });
 
       posts = posts
-        .filter((el) => el.status === 'publish')
-        .map(({ id, slug, title, excerpt, date, tags, content }) => ({
+        .filter((el) => el.visibility === 'public')
+        // eslint-disable-next-line
+        .map(({ id, slug, title, excerpt, published_at, tags, html }) => ({
           id,
           slug,
           title,
           excerpt,
-          date,
+          published_at,
           tags,
-          content
+          html
         }));
 
       commit('updatePosts', posts);
