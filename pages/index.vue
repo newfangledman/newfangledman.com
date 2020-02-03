@@ -4,10 +4,10 @@
       <main>
         <div class="post" v-for="post in sortedPosts" :key="post.id">
           <h3>
-            <a :href="`blog/${post.slug}`">{{ post.title.rendered }}</a>
+            <a :href="`blog/${post.slug}`">{{ post.title }}</a>
           </h3>
           <small>{{ post.date }}</small>
-          <div v-html="post.excerpt.rendered"></div>
+          <div v-html="post.excerpt"></div>
           <a :href="`blog/${post.slug}`" class="readmore slide">Read more ⟶</a>
         </div>
       </main>
